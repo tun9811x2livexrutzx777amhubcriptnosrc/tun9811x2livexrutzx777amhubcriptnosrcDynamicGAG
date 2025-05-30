@@ -630,6 +630,32 @@ spawn(function()
     end
 end)
 Tabs.Dupe:AddSection("[💵] Money")
+Tabs.General:AddToggle("Dupe Money", {
+    Title = "Dupe Money", 
+    Description = "",
+    Default = getgenv().Config["Dupe Money"] or false,
+    Callback = function(Value)
+        getgenv().Config["Dupe Money"] = Value
+        getgenv()['Update_Setting'](getgenv()['MyName'])
+    end
+})
+spawn(function()
+    while wait() do
+        if getgenv().Config["Dupe Money"] then
+            pcall(function()
+            for i,v in pairs(game.Players:GetPlayers()) do
+                    if v ~= game.Players.LocalPlayer and v.Character:FindFirstChildOfClass("Tool") and v.Character:FindFirstChildOfClass("Tool"):GetAttribute("ItemType") == "Pet" then
+                        local args = {
+                            [1] = v.Character:FindFirstChildOfClass("Tool")
+                        }
+
+                        game:GetService("ReplicatedStorage"):WaitForChild("GameEvents", 9e9):WaitForChild("SellPet_RE", 9e9):FireServer(unpack(args))
+                    end
+                end
+            end)
+        end
+    end
+end)
 Tabs.Dupe:AddButton({
     Title = "Dupe Money",
     Description = "",
