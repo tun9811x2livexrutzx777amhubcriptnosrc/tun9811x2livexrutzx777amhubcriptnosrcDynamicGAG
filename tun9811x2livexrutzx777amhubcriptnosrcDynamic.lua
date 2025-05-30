@@ -630,7 +630,7 @@ spawn(function()
     end
 end)
 Tabs.Dupe:AddSection("[💵] Money")
-Tabs.General:AddToggle("Dupe Money", {
+Tabs.Dupe:AddToggle("Dupe Money", {
     Title = "Dupe Money", 
     Description = "",
     Default = getgenv().Config["Dupe Money"] or false,
