@@ -183,7 +183,7 @@ for i,v in pairs(game:GetService("Players").LocalPlayer.Backpack:GetChildren()) 
 end
 local lpname = game.Players.LocalPlayer.Name
 spawn(function()
-    while wait() do
+    while wait(0.1) do
         if getgenv().Config["Auto Plant"] then
             pcall(function()
                 for i,v in next , workspace.Farm:GetChildren() do
