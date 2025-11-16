@@ -394,11 +394,10 @@ local ObjectTree = {
 	}
 }
 
-pcall(function()
-    if gethui():FindFirstChild('Roblox/Ui') then
-        gethui():FindFirstChild('Roblox/Ui'):Destroy()
-    end
-end)
+if gethui():FindFirstChild('Roblox/Ui') then
+	gethui():FindFirstChild('Roblox/Ui'):Destroy()
+end
+
 -- Holds direct closure data
 local ClosureBindings = {
 	function()local maui,script,require,getfenv,setfenv=ImportGlobals(1)local Lighting = game:GetService("Lighting")
@@ -420,7 +419,7 @@ local ClosureBindings = {
 
 		local ProtectGui = protectgui or (syn and syn.protect_gui) or function() end
 		local GUI = New("ScreenGui", {
-			Parent = gethui()
+			Parent = gethui(),
 			Name = "Roblox/Ui"
 		})
 
